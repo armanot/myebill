@@ -3,53 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My TNB Bill Calculator</title>
+    <title>My TNB Electricity Bill Calculator v2.0</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h2>TNB Bill Calculator v1.0</h2>
-    <p>Enter your current electricity usage in kWh:</p>
-    <input type="number" id="kWhInput" placeholder="Enter kWh">
-    <button onclick="calculateBill()">Calculate</button>
-    <p id="result"></p>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h2 class="card-title">My TNB Electricity Bill Calculator</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="kWhInput">Enter your current electricity usage in kWh:</label>
+                            <input type="number" class="form-control" id="kWhInput" placeholder="Enter kWh">
+                        </div>
+                        <button class="btn btn-primary" onclick="calculateBill()">Calculate</button>
+                        <p class="mt-3" id="result"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <script>
-        function calculateElectricityBill(kWh) {
-            let bill = 0;
+    <!-- Bootstrap JS and jQuery (optional, for Bootstrap features) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-            // For the first 200 kWh
-            if (kWh <= 200) {
-                bill += kWh * 0.21800;
-            } else {
-                bill += 200 * 0.21800;
-                kWh -= 200;
-
-                // For the next 100 kWh (201-300 kWh)
-                if (kWh <= 100) {
-                    bill += kWh * 0.33400;
-                } else {
-                    bill += 100 * 0.33400;
-                    kWh -= 100;
-
-                    // For the next 300 kWh (301-600 kWh)
-                    bill += kWh * 0.51600;
-                }
-            }
-
-            return bill;
-        }
-
-function calculateBill() {
-    const kWhInput = document.getElementById("kWhInput").value;
-    const kWh = parseFloat(kWhInput);
-
-    if (isNaN(kWh)) {
-        document.getElementById("result").textContent = "Please enter a valid number.";
-        return;
-    }
-
-    const billAmount = calculateElectricityBill(kWh);
-    document.getElementById("result").textContent = "Your electricity bill is: $" + billAmount.toFixed(2);
-}
-</script>
+    <!-- JavaScript code -->
+    <script src="js/script.js"></script>
 </body>
 </html>
