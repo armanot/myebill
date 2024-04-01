@@ -34,5 +34,5 @@ function calculateBill() {
     }
 
     const billAmount = calculateElectricityBill(kWh);
-    document.getElementById("result").textContent = "Your electricity bill is: $" + billAmount.toFixed(2);
+    document.getElementById("result").textContent = "Your electricity bill is: MYR" + billAmount.toFixed(2);
 }
